@@ -1,3 +1,8 @@
 Heap: 堆，最大的内存空间，存放对象实例和数组，全局共享
 Stack: 栈，存放基本类型及对象应用，线程私有
 Method Area: 方法区，类被加载后的信息，静态变量，常量等，全局共享
+
+added at 2020-05-29
+minor gc trigger when there is no space for allocating for new objects , and is clearing young generation(incluse eden and survival)
+majar gc , trigger by minor gc ,no specific time ,clearing tenured space
+full gc , clear all space
