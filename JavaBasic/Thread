@@ -1,3 +1,8 @@
 #2020-05-31
 sleep()属于Thread类，wait()属于Object类；都会释放cpu资源，都会造成线程阻塞；但sleep不会释放对象锁，
 wait释放锁进去等待队列；
+状态：new runnable running blocked dead
+阻塞分类：1、同步阻塞，running状态的线程获取cpu时间后，准备获取对象同步锁时，发现同步锁被另一个
+线程占有，则JVM会把该线程放入锁池中（lock pool）
+2、等待阻塞，running状态线程调用o.wait()后，释放cpu以及锁资源，JVM把该线程放入waiting queue
+3、其他阻塞，t.sleep() , t.join()或者发出IO请求时，JVM会将线程置为阻塞状态
