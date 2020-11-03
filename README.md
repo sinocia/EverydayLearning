@@ -1,2 +1,0 @@
-# EverydayLearning
-Learning notes

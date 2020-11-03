@@ -1,0 +1,7 @@
+Spring中处理上传的multipart类型文件，可设置保存到disk的threshold,默认大小为0, https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+Comes to the point, As per my knowledge following are some differences,
+properties file : It store data in sequential format. .yml file : It store data in hierarchical format.
+properties file : It supports only key-value pair basically string values. .yml file : It supports key-value pair as well as map, list & scalar type values.
+properties file : This file specifically used for JAVA. .yml file : This file type are used by many of the languages like JAVA, Python, ROR, etc.
+If you want to handle multiple profiles, .properties file : In this case you need to manage individual file for each profile. .yml file : In this file type you just need to manage single file and place configuration data of specific profile inside it.
+For Spring project, .properties file : @PropertySource annotation support this file type. .yml file : @PropertySource annotation can't support this file type.

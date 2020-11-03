@@ -1,2 +1,7 @@
 @SpringBootApplication 注解所在的类最好放在最外层的包，这样可以自动扫描该包下面索引的bean,如非如此，需要增加
 @ComponentScan 自定义扫描路径
+
+Spring DependencyInjection
+1、@Autowire注解加在需要Spring注入的对象上
+2、@Configuration配置类中，定义配置信息，Spring在初始化时会扫描
+3、在上述配置类中，增加方法，此返回需要注入的对象，并在该方法上加@Bean注解
