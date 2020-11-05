@@ -2,3 +2,5 @@
 consumer producer then design and implement a mq
 netty
 mysql主从复制原理及可能的影响
+Memory consistency MemoryVisibility happen-before atomic volitale
+长连接 短连接
