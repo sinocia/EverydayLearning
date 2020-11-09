@@ -1,0 +1,37 @@
+穿透：key在缓存不存在，在数据库也不存在。比如恶意的攻击，请求id为负数。库崩，系统崩。
+1、数据库不存在，setRedis(-1,null,time)，null可以为"请求错误"等，具体视情况定，且设置一定
+的缓存过期时间 2、对所有调用者都抱有不信任太多，校验每个请求参数，不符合直接return
+3、Bloom filter，本质上布隆过滤器是一种数据结构，比较巧妙的概率型数据结构
+（probabilistic data structure），特点是高效地插入和查询，可以用来告诉你 
+“某样东西一定不存在或者可能存在”。
+相比于传统的 List、Set、Map 等数据结构，它更高效、占用空间更少，
+但是缺点是其返回的结果是概率性的，而不是确切的。
+但此redis场景下，只需要判断"一定不存在"足矣。
+
+击穿：雪崩的一种，单个热点key失效，请求打到后端库，库崩。 1、设置热点key永不过期
+2、对高并发资源加互斥锁（redis）代码如下
+public String get(key) {
+      String value = redis.get(key);
+      if (value == null) { //代表缓存值过期
+          //设置3min的超时，防止del操作失败的时候，下次缓存过期一直不能load db
+		  if (redis.setnx(key_mutex, 1, 3 * 60) == 1) {  //代表设置成功
+               value = db.get(key);
+                      redis.set(key, value, expire_secs);
+                      redis.del(key_mutex);
+              } else {  //这个时候代表同时候的其他线程已经load db并回设到缓存了，这时候重试获取缓存值即可
+                      sleep(50);
+                      get(key);  //重试
+              }
+          } else {
+              return value;      
+          }
+ }
+
+雪崩：瞬间大面积key失效，请求打到后端数据库，库崩。1、key失效时间加随机值，这样
+就不会在同一时间失效setRedis(key,value,period+radom(10000)) 2、集群化，key分布在
+不同节点上，保证不会同一时间大规模失效 3、设置key永不过期，数据有更新直接更新缓存
+
+//todo
+事前：redis 高可用，主从+哨兵，redis cluster，避免全盘崩溃。
+事中：本地 ehcache 缓存 + hystrix 限流&降级，避免 MySQL 被打死。
+事后：redis 持久化，一旦重启，自动从磁盘上加载数据，快速恢复缓存数据
