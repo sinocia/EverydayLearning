@@ -1,0 +1,9 @@
+public void foo( int i, String s, String... vars)
+
+public void foo(String...varargs){}
+foo("arg1", "arg2", "arg3");
+//上述过程和下面的调用是等价的
+foo(new String[]{"arg1", "arg2", "arg3"});
+调用：
+foo("");
+foo("","")
