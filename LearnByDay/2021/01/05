@@ -1,0 +1,5 @@
+实体类需要序列化，实现Serilizable接口  不需要序列号的字段，用transient修饰
+
+postman无法接收参数 将postman请求的时候 content-type改为 x-www-form-urlencoded 就
+
+maven install 打jar包自动同步到本地maven仓库

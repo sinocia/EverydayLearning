@@ -1,5 +1,5 @@
 优化，加入CV
-代码重构：单例 http统一封装
+代码重构：单例 http统一封装 jsp换成resful接口 工具库封装
 锁优化
 多线程同步时，条件判断可使用CountdownLatch CyclicBarrier
 数据库优化，表优化，索引优化，老jsp代码转成拆成java restful

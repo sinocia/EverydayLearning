@@ -5,3 +5,5 @@ Spring DependencyInjection
 1、@Autowire注解加在需要Spring注入的对象上
 2、@Configuration配置类中，定义配置信息，Spring在初始化时会扫描
 3、在上述配置类中，增加方法，此返回需要注入的对象，并在该方法上加@Bean注解
+
+springboot可以本地运行调试，极大方便开发自测
