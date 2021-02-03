@@ -1,0 +1,8 @@
+https://www.runoob.com/servlet/servlet-first-example.html
+
+需要在WEB-INF下自建classes文件夹
+<servlet>
+        <servlet-name>HttpServletDemo</servlet-name>
+        <servlet-class>com.pascal.jee.HttpServletDemo</servlet-class>
+</servlet>
+com.pascal.jee.HttpServletDemo需要加全部绝对路径，不然classload找不到
