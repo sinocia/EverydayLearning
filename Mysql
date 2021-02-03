@@ -1,3 +1,9 @@
 #2020-05-29
 联合索引（a,b,c）实际为a,(a,b),(a,b,c)三个索引
 建立联合索引时会遵循最左前缀匹配原则：select * from stu where a= 1, b=2 ,d=3; 会使用（a,b)索引
+
+#2021-02-02
+ubuntu安装后远程无法连接
+修改mysql库下root用户远程可访问
+ubuntu防火墙未开启 ufw allow 3306
+注释/etc/mysql/mysql.conf.d/mysqld.cnf   #bind-address           = 127.0.0.1
