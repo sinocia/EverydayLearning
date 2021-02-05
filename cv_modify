@@ -5,3 +5,7 @@
 数据库优化，表优化，索引优化，老jsp代码转成拆成java restful
 新技术调研及测试平台搭建：机器学习，docker,cadvisor,prometheus
 基础架构组
+所有请求调用日志改造==》tomcat 拦截器
+老项目dubbo引入springboot apollo配置
+引入j2cache，降低redis压力
+工具培训：eclipse转intellij ，vscode

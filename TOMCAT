@@ -2,3 +2,4 @@ vmware ubuntu install
 https://linuxize.com/post/how-to-install-tomcat-9-on-ubuntu-20-04/
 
 可以直接下载tar包解压，可直接start.sh
+修改web.xml不需要重启
